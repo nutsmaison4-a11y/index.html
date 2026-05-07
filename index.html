@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأسئلة الشائعة - FAQ</title>
+    <title>FAQ - Frequently Asked Questions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #f0f4f8;
@@ -37,6 +40,23 @@
             --image-overlay: rgba(91, 106, 240, 0.18);
             --badge-bg: rgba(91, 106, 240, 0.9);
             --badge-text: #fff;
+            --accent-1: #5b6af0;
+            --accent-2: #f59e0b;
+            --accent-3: #10b981;
+            --accent-4: #ef4444;
+            --accent-5: #8b5cf6;
+            --accent-6: #ec4899;
+            --accent-7: #06b6d4;
+            --accent-8: #f97316;
+            --gradient-1: linear-gradient(135deg, #5b6af0, #7c3aed);
+            --gradient-2: linear-gradient(135deg, #f59e0b, #ef4444);
+            --gradient-3: linear-gradient(135deg, #10b981, #06b6d4);
+            --gradient-4: linear-gradient(135deg, #ec4899, #8b5cf6);
+            --gradient-5: linear-gradient(135deg, #f97316, #f59e0b);
+            --font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            --font-body: 'Inter', 'Manrope', sans-serif;
+            --font-accent: 'Space Grotesk', 'DM Sans', sans-serif;
+            --font-arabic: 'Lexend', 'Outfit', sans-serif;
         }
 
         [data-theme="dark"] {
@@ -128,13 +148,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', 'Tajawal', 'Cairo', sans-serif;
+            font-family: var(--font-body);
             background: var(--bg);
             background-image:
                 radial-gradient(ellipse at 20% 20%, rgba(91, 106, 240, 0.04) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 70%, rgba(124, 58, 237, 0.04) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 50%, rgba(91, 106, 240, 0.02) 0%, transparent 70%);
+                radial-gradient(ellipse at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 70%),
+                radial-gradient(ellipse at 10% 85%, rgba(16, 185, 129, 0.03) 0%, transparent 55%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -163,9 +188,20 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--primary-gradient);
+            height: 5px;
+            background: linear-gradient(90deg, #5b6af0, #ec4899, #f59e0b, #10b981, #5b6af0);
+            background-size: 200% 100%;
             border-radius: 0 0 4px 4px;
+            animation: shimmerBar 4s ease-in-out infinite;
+        }
+        @keyframes shimmerBar {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
         .faq-container::after {
             content: '❓';
@@ -178,6 +214,7 @@
             user-select: none;
         }
 
+        /* Top bar */
         .top-bar {
             display: flex;
             justify-content: flex-start;
@@ -193,18 +230,20 @@
             padding: 8px 16px;
             cursor: pointer;
             font-size: 15px;
-            font-family: inherit;
+            font-family: var(--font-accent);
             color: var(--text);
             display: flex;
             align-items: center;
             gap: 8px;
             transition: var(--transition);
             user-select: none;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
         .theme-toggle:hover {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(91, 106, 240, 0.06);
+            transform: translateY(-1px);
         }
         .theme-icon-sun,
         .theme-icon-moon {
@@ -226,6 +265,7 @@
             display: inline;
         }
 
+        /* Header */
         .faq-header {
             text-align: center;
             margin-bottom: 28px;
@@ -236,15 +276,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 68px;
-            height: 68px;
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
-            background: var(--primary-light);
+            background: linear-gradient(135deg, #eef0ff 0%, #fae8ff 50%, #ecfdf5 100%);
             margin-bottom: 16px;
-            font-size: 32px;
-            box-shadow: 0 8px 24px rgba(91, 106, 240, 0.15);
+            font-size: 34px;
+            box-shadow: 0 8px 32px rgba(91, 106, 240, 0.18), 0 0 0 6px rgba(91, 106, 240, 0.04);
             animation: float 3s ease-in-out infinite;
-            transition: background 0.4s ease;
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.6);
         }
         @keyframes float {
             0%,
@@ -252,23 +293,28 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-8px);
+                transform: translateY(-10px);
             }
         }
         .faq-header h1 {
-            font-size: 28px;
-            font-weight: 800;
-            background: var(--primary-gradient);
+            font-size: 30px;
+            font-weight: 900;
+            font-family: var(--font-heading);
+            background: linear-gradient(135deg, #5b6af0 0%, #ec4899 40%, #f59e0b 80%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 6px;
+            letter-spacing: -0.5px;
         }
         .faq-header p {
             color: var(--text-light);
             font-size: 15px;
+            font-family: var(--font-accent);
+            font-weight: 500;
         }
 
+        /* Search */
         .search-wrapper {
             position: relative;
             margin-bottom: 24px;
@@ -276,27 +322,29 @@
         }
         .search-wrapper input {
             width: 100%;
-            padding: 14px 48px;
+            padding: 14px 52px;
             border: 2px solid var(--border);
             border-radius: 50px;
             font-size: 15px;
-            font-family: inherit;
+            font-family: var(--font-body);
             background: var(--input-bg);
             color: var(--text);
             transition: var(--transition);
             outline: none;
+            letter-spacing: 0.2px;
         }
         .search-wrapper input:focus {
             border-color: #5b6af0;
             background: var(--card-bg);
-            box-shadow: 0 0 0 6px rgba(91, 106, 240, 0.06);
+            box-shadow: 0 0 0 6px rgba(91, 106, 240, 0.06), 0 4px 16px rgba(91, 106, 240, 0.08);
         }
         .search-wrapper input::placeholder {
             color: #94a3b8;
+            font-family: var(--font-accent);
         }
         .search-icon {
             position: absolute;
-            right: 18px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 20px;
@@ -306,10 +354,20 @@
         }
         .search-wrapper input:focus~.search-icon {
             opacity: 0.9;
+            animation: pulse 0.6s ease;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: translateY(-50%) scale(1);
+            }
+            50% {
+                transform: translateY(-50%) scale(1.2);
+            }
         }
         .search-clear {
             position: absolute;
-            left: 16px;
+            right: 16px;
             top: 50%;
             transform: translateY(-50%);
             background: #e2e8f0;
@@ -326,6 +384,7 @@
             transition: var(--transition);
             opacity: 0;
             pointer-events: none;
+            font-family: var(--font-body);
         }
         .search-clear.visible {
             opacity: 1;
@@ -334,12 +393,17 @@
         .search-clear:hover {
             background: #cbd5e1;
             color: #1e293b;
+            transform: translateY(-50%) scale(1.08);
+        }
+        .search-clear:active {
+            transform: translateY(-50%) scale(0.94);
         }
 
+        /* Colorful categories */
         .categories {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 9px;
             margin-bottom: 28px;
             justify-content: center;
             z-index: 1;
@@ -352,25 +416,108 @@
             background: #fff;
             cursor: pointer;
             font-size: 13.5px;
-            font-weight: 600;
-            font-family: inherit;
+            font-weight: 700;
+            font-family: var(--font-accent);
             color: var(--text-light);
             transition: var(--transition);
             white-space: nowrap;
             user-select: none;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
         }
-        .cat-btn:hover {
-            border-color: #c4b5fd;
+        .cat-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        .cat-btn[data-category="all"]:hover {
+            border-color: #5b6af0;
             color: #5b6af0;
             background: #fafaff;
         }
-        .cat-btn.active {
-            background: var(--primary-gradient);
+        .cat-btn[data-category="all"].active {
+            background: var(--gradient-1);
             color: #fff;
             border-color: transparent;
-            box-shadow: 0 4px 16px rgba(91, 106, 240, 0.3);
+            box-shadow: 0 4px 20px rgba(91, 106, 240, 0.35);
+        }
+        .cat-btn[data-category="account"]:hover {
+            border-color: #f59e0b;
+            color: #f59e0b;
+            background: #fffdf7;
+        }
+        .cat-btn[data-category="account"].active {
+            background: var(--gradient-2);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+        }
+        .cat-btn[data-category="billing"]:hover {
+            border-color: #10b981;
+            color: #10b981;
+            background: #f7fdfa;
+        }
+        .cat-btn[data-category="billing"].active {
+            background: var(--gradient-3);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+        }
+        .cat-btn[data-category="technical"]:hover {
+            border-color: #ec4899;
+            color: #ec4899;
+            background: #fff5f9;
+        }
+        .cat-btn[data-category="technical"].active {
+            background: var(--gradient-4);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
+        }
+        .cat-btn[data-category="policy"]:hover {
+            border-color: #06b6d4;
+            color: #06b6d4;
+            background: #f5fdff;
+        }
+        .cat-btn[data-category="policy"].active {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.35);
+        }
+        .cat-btn[data-category="android"]:hover {
+            border-color: #8b5cf6;
+            color: #8b5cf6;
+            background: #faf8ff;
+        }
+        .cat-btn[data-category="android"].active {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+        }
+        .cat-btn[data-category="performance"]:hover {
+            border-color: #f97316;
+            color: #f97316;
+            background: #fffaf7;
+        }
+        .cat-btn[data-category="performance"].active {
+            background: var(--gradient-5);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
+        }
+        .cat-btn.active {
+            font-weight: 800;
+            letter-spacing: 0.5px;
         }
 
+        /* FAQ list */
         .faq-list {
             display: flex;
             flex-direction: column;
@@ -388,6 +535,7 @@
             box-shadow: var(--shadow-sm);
             animation: fadeSlideIn 0.5s ease forwards;
             opacity: 0;
+            border-left: 4px solid transparent;
         }
         @keyframes fadeSlideIn {
             from {
@@ -402,10 +550,87 @@
         .faq-item:hover {
             border-color: #e8ecff;
             box-shadow: var(--shadow-md);
+            border-left-color: #c4b5fd;
         }
         .faq-item.open {
             border-color: #d4d9ff;
             box-shadow: 0 8px 28px rgba(91, 106, 240, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-left-color: #5b6af0;
+            border-left-width: 5px;
+        }
+
+        /* Color questions by category */
+        .faq-item[data-category="account"] {
+            border-right: 4px solid transparent;
+        }
+        .faq-item[data-category="account"]:hover {
+            border-right-color: #fbbf24;
+            border-left-color: #fbbf24;
+        }
+        .faq-item[data-category="account"].open {
+            border-right-color: #f59e0b;
+            border-left-color: #f59e0b;
+            border-right-width: 5px;
+        }
+        .faq-item[data-category="billing"] {
+            border-right: 4px solid transparent;
+        }
+        .faq-item[data-category="billing"]:hover {
+            border-right-color: #34d399;
+            border-left-color: #34d399;
+        }
+        .faq-item[data-category="billing"].open {
+            border-right-color: #10b981;
+            border-left-color: #10b981;
+            border-right-width: 5px;
+        }
+        .faq-item[data-category="technical"] {
+            border-right: 4px solid transparent;
+        }
+        .faq-item[data-category="technical"]:hover {
+            border-right-color: #f472b6;
+            border-left-color: #f472b6;
+        }
+        .faq-item[data-category="technical"].open {
+            border-right-color: #ec4899;
+            border-left-color: #ec4899;
+            border-right-width: 5px;
+        }
+        .faq-item[data-category="policy"] {
+            border-right: 4px solid transparent;
+        }
+        .faq-item[data-category="policy"]:hover {
+            border-right-color: #22d3ee;
+            border-left-color: #22d3ee;
+        }
+        .faq-item[data-category="policy"].open {
+            border-right-color: #06b6d4;
+            border-left-color: #06b6d4;
+            border-right-width: 5px;
+        }
+        .faq-item[data-category="android"] {
+            border-right: 4px solid transparent;
+        }
+        .faq-item[data-category="android"]:hover {
+            border-right-color: #a78bfa;
+            border-left-color: #a78bfa;
+        }
+        .faq-item[data-category="android"].open {
+            border-right-color: #8b5cf6;
+            border-left-color: #8b5cf6;
+            border-right-width: 5px;
+        }
+        .faq-item[data-category="performance"] {
+            border-right: 4px solid transparent;
+        }
+        .faq-item[data-category="performance"]:hover {
+            border-right-color: #fb923c;
+            border-left-color: #fb923c;
+        }
+        .faq-item[data-category="performance"].open {
+            border-right-color: #f97316;
+            border-left-color: #f97316;
+            border-right-width: 5px;
         }
 
         .faq-question {
@@ -417,12 +642,15 @@
             user-select: none;
             gap: 14px;
             transition: var(--transition);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 15px;
             color: var(--text);
+            font-family: var(--font-heading);
+            letter-spacing: 0.2px;
         }
         .faq-item.open .faq-question {
             color: #5b6af0;
+            font-weight: 800;
         }
         .faq-question-text {
             flex: 1;
@@ -432,26 +660,85 @@
         }
         .faq-q-icon {
             flex-shrink: 0;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
             background: #f1f5f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 15px;
+            font-weight: 800;
             color: #5b6af0;
             transition: var(--transition);
+            font-family: var(--font-heading);
         }
         .faq-item.open .faq-q-icon {
             background: var(--primary-gradient);
             color: #fff;
+            box-shadow: 0 4px 14px rgba(91, 106, 240, 0.3);
+            transform: rotate(-5deg) scale(1.05);
         }
+        /* Colored icons by category */
+        .faq-item[data-category="account"] .faq-q-icon {
+            color: #f59e0b;
+            background: #fffbeb;
+        }
+        .faq-item[data-category="account"].open .faq-q-icon {
+            background: var(--gradient-2);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+        }
+        .faq-item[data-category="billing"] .faq-q-icon {
+            color: #10b981;
+            background: #ecfdf5;
+        }
+        .faq-item[data-category="billing"].open .faq-q-icon {
+            background: var(--gradient-3);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+        }
+        .faq-item[data-category="technical"] .faq-q-icon {
+            color: #ec4899;
+            background: #fdf2f8;
+        }
+        .faq-item[data-category="technical"].open .faq-q-icon {
+            background: var(--gradient-4);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
+        }
+        .faq-item[data-category="policy"] .faq-q-icon {
+            color: #06b6d4;
+            background: #ecfeff;
+        }
+        .faq-item[data-category="policy"].open .faq-q-icon {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3);
+        }
+        .faq-item[data-category="android"] .faq-q-icon {
+            color: #8b5cf6;
+            background: #f5f3ff;
+        }
+        .faq-item[data-category="android"].open .faq-q-icon {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+        }
+        .faq-item[data-category="performance"] .faq-q-icon {
+            color: #f97316;
+            background: #fff7ed;
+        }
+        .faq-item[data-category="performance"].open .faq-q-icon {
+            background: var(--gradient-5);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+        }
+
         .faq-arrow {
             flex-shrink: 0;
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: #f1f5f9;
             display: flex;
@@ -460,11 +747,13 @@
             transition: var(--transition);
             font-size: 13px;
             color: #94a3b8;
+            font-weight: 700;
         }
         .faq-item.open .faq-arrow {
             background: #eef0ff;
             color: #5b6af0;
             transform: rotate(180deg);
+            box-shadow: 0 2px 8px rgba(91, 106, 240, 0.15);
         }
 
         .faq-answer-wrapper {
@@ -482,17 +771,59 @@
             padding: 0 20px 18px 20px;
             color: var(--text-light);
             font-size: 14.5px;
-            line-height: 1.8;
-            margin-right: 44px;
+            line-height: 1.85;
+            margin-left: 46px;
+            font-family: var(--font-body);
         }
 
-        /* ========== معرض الصور المحسّن ========== */
+        /* Format elements inside the answer */
+        .faq-answer strong,
+        .faq-answer b {
+            color: var(--primary);
+            font-weight: 700;
+            font-family: var(--font-heading);
+        }
+        .faq-answer ul,
+        .faq-answer ol {
+            margin: 12px 0;
+            padding-left: 24px;
+            color: var(--text);
+            font-family: var(--font-accent);
+        }
+        .faq-answer li {
+            margin-bottom: 8px;
+            list-style-position: outside;
+        }
+        .faq-answer a {
+            color: #5b6af0;
+            text-decoration: underline;
+            font-weight: 700;
+            transition: color 0.2s;
+            font-family: var(--font-heading);
+        }
+        .faq-answer a:hover {
+            color: #7c3aed;
+        }
+        .faq-answer .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fde68a 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #92400e;
+            font-family: var(--font-accent);
+        }
+        [data-theme="dark"] .faq-answer .highlight {
+            background: linear-gradient(120deg, #78350f 0%, #92400e 100%);
+            color: #fef3c7;
+        }
+
+        /* ========== Enhanced Image Gallery ========== */
         .gallery-wrapper {
             background: var(--gallery-bg);
             border-radius: var(--radius-sm);
             padding: 14px 16px;
             margin: 8px 20px 14px 20px;
-            margin-right: 44px;
+            margin-left: 46px;
             border: 2px dashed var(--image-border);
             transition: all 0.4s ease;
             position: relative;
@@ -507,12 +838,13 @@
             align-items: center;
             gap: 6px;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: var(--primary);
             margin-bottom: 10px;
-            opacity: 0.8;
+            opacity: 0.85;
+            font-family: var(--font-accent);
         }
         .gallery-label::before {
             content: '🖼️';
@@ -531,18 +863,20 @@
             overflow: hidden;
             cursor: pointer;
             aspect-ratio: 4 / 3;
-            background: #e2e8f0;
+            background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             isolation: isolate;
+            border: 3px solid transparent;
         }
         .gallery-item:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 12px 32px rgba(91, 106, 240, 0.2);
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 14px 36px rgba(91, 106, 240, 0.22);
             z-index: 5;
+            border-color: #c4b5fd;
         }
         .gallery-item:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
             transition: all 0.15s ease;
         }
 
@@ -554,7 +888,7 @@
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .gallery-item:hover img {
-            transform: scale(1.12);
+            transform: scale(1.14);
         }
 
         .gallery-item-overlay {
@@ -573,47 +907,48 @@
         }
 
         .gallery-item-overlay .zoom-icon {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
             color: #5b6af0;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
             transform: scale(0.7);
         }
         .gallery-item:hover .zoom-icon {
-            transform: scale(1);
+            transform: scale(1.05);
         }
 
         .gallery-badge {
             position: absolute;
             top: 8px;
-            right: 8px;
+            left: 8px;
             background: var(--badge-bg);
             color: var(--badge-text);
             font-size: 10px;
-            font-weight: 700;
-            padding: 3px 9px;
+            font-weight: 800;
+            padding: 4px 10px;
             border-radius: 20px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.6px;
             backdrop-filter: blur(4px);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             z-index: 2;
             pointer-events: none;
             transition: all 0.3s ease;
+            font-family: var(--font-heading);
         }
         .gallery-item:hover .gallery-badge {
             background: rgba(124, 58, 237, 0.95);
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
-        /* صورة واحدة - تنسيق خاص */
+        /* Single image - special styling */
         .gallery-grid.single-image-grid {
             grid-template-columns: 1fr;
             max-width: 420px;
@@ -624,19 +959,20 @@
             max-height: 280px;
         }
 
-        /* لا توجد نتائج */
+        /* No results */
         .no-results {
             text-align: center;
             padding: 30px;
             color: var(--text-light);
             display: none;
             animation: fadeSlideIn 0.4s ease forwards;
+            font-family: var(--font-accent);
         }
         .no-results.show {
             display: block;
         }
         .no-results .icon {
-            font-size: 48px;
+            font-size: 52px;
             margin-bottom: 10px;
             opacity: 0.5;
         }
@@ -650,13 +986,17 @@
             z-index: 1;
             position: relative;
             animation: fadeSlideIn 0.35s ease forwards;
+            font-family: var(--font-accent);
+            font-weight: 600;
         }
         .results-badge.visible {
             display: block;
         }
         .results-badge span {
-            font-weight: 700;
+            font-weight: 800;
             color: #5b6af0;
+            font-family: var(--font-heading);
+            font-size: 15px;
         }
 
         .contact-footer {
@@ -669,7 +1009,7 @@
             transition: border-color 0.4s ease;
         }
         .contact-footer .contact-title {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 16px;
             color: var(--text);
             margin-bottom: 6px;
@@ -677,11 +1017,13 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-family: var(--font-heading);
         }
         .contact-footer .contact-subtitle {
             font-size: 13px;
             color: var(--text-light);
             margin-bottom: 18px;
+            font-family: var(--font-accent);
         }
         .contact-cards {
             display: flex;
@@ -699,27 +1041,29 @@
             padding: 10px 18px;
             text-decoration: none;
             color: var(--text);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 14px;
             transition: var(--transition);
             box-shadow: var(--contact-card-shadow);
+            font-family: var(--font-accent);
         }
         .contact-card:hover {
             border-color: #5b6af0;
-            box-shadow: 0 8px 24px rgba(91, 106, 240, 0.12);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(91, 106, 240, 0.15);
+            transform: translateY(-3px);
             color: #5b6af0;
+            background: #fafaff;
         }
 
-        /* ========== Lightbox محسّن ========== */
+        /* ========== Enhanced Lightbox ========== */
         .lightbox-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(16px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -748,6 +1092,7 @@
             box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
             object-fit: contain;
             transition: transform 0.35s ease, opacity 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.1);
         }
         .lightbox-content img.switching {
             opacity: 0;
@@ -758,13 +1103,13 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: #fff;
             font-size: 26px;
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -773,33 +1118,34 @@
             justify-content: center;
             z-index: 10;
             user-select: none;
+            font-family: var(--font-heading);
         }
         .lightbox-nav:hover {
-            background: rgba(255, 255, 255, 0.28);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            transform: translateY(-50%) scale(1.08);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+            transform: translateY(-50%) scale(1.1);
         }
         .lightbox-nav:active {
-            transform: translateY(-50%) scale(0.94);
+            transform: translateY(-50%) scale(0.92);
         }
         .lightbox-nav.prev {
-            left: -64px;
+            left: -68px;
         }
         .lightbox-nav.next {
-            right: -64px;
+            right: -68px;
         }
 
         .lightbox-close-btn {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            top: 22px;
+            right: 22px;
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: #fff;
             font-size: 20px;
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -807,10 +1153,11 @@
             align-items: center;
             justify-content: center;
             z-index: 10001;
+            font-family: var(--font-heading);
         }
         .lightbox-close-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.32);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
             transform: rotate(90deg);
         }
 
@@ -819,34 +1166,35 @@
             bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.7);
             color: #fff;
-            padding: 7px 18px;
+            padding: 8px 20px;
             border-radius: 24px;
             font-size: 13px;
-            font-weight: 600;
-            backdrop-filter: blur(6px);
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+            letter-spacing: 0.6px;
             z-index: 10001;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: var(--font-heading);
         }
 
-        /* نقاط المصغرات السفلية */
+        /* Bottom thumbnail dots */
         .lightbox-dots {
             position: fixed;
-            bottom: 70px;
+            bottom: 72px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 8px;
+            gap: 9px;
             z-index: 10001;
             flex-wrap: wrap;
             justify-content: center;
             max-width: 80vw;
         }
         .lightbox-dot {
-            width: 10px;
-            height: 10px;
+            width: 11px;
+            height: 11px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.4);
             cursor: pointer;
@@ -856,12 +1204,28 @@
         .lightbox-dot.active {
             background: #fff;
             border-color: #fff;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-            transform: scale(1.25);
+            box-shadow: 0 0 14px rgba(255, 255, 255, 0.55);
+            transform: scale(1.3);
         }
         .lightbox-dot:hover {
             background: rgba(255, 255, 255, 0.7);
-            transform: scale(1.15);
+            transform: scale(1.2);
+        }
+
+        /* Colorful scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #5b6af0, #ec4899, #f59e0b);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #4c5ae0, #db2780, #e08c00);
         }
 
         @media (max-width: 680px) {
@@ -870,19 +1234,19 @@
                 border-radius: var(--radius);
             }
             .faq-header h1 {
-                font-size: 23px;
+                font-size: 24px;
             }
             .faq-question {
                 padding: 14px 12px;
                 font-size: 14px;
             }
             .faq-answer {
-                margin-right: 32px;
+                margin-left: 34px;
                 padding: 0 12px 14px 12px;
                 font-size: 13.5px;
             }
             .gallery-wrapper {
-                margin-right: 32px;
+                margin-left: 34px;
                 padding: 10px 10px;
             }
             .gallery-grid {
@@ -906,21 +1270,21 @@
                 border-radius: 16px;
             }
             .lightbox-nav.prev {
-                left: -16px;
+                left: -18px;
             }
             .lightbox-nav.next {
-                right: -16px;
+                right: -18px;
             }
             .lightbox-nav {
-                width: 40px;
-                height: 40px;
+                width: 42px;
+                height: 42px;
                 font-size: 20px;
             }
             .lightbox-close-btn {
                 top: 12px;
-                left: 12px;
-                width: 38px;
-                height: 38px;
+                right: 12px;
+                width: 40px;
+                height: 40px;
                 font-size: 16px;
             }
             .gallery-item {
@@ -931,13 +1295,13 @@
 </head>
 <body>
 
-    <!-- Lightbox محسّن -->
+    <!-- Enhanced Lightbox -->
     <div class="lightbox-overlay" id="lightboxOverlay">
-        <button class="lightbox-close-btn" id="lightboxClose" aria-label="إغلاق المعرض">✕</button>
-        <button class="lightbox-nav prev" id="lightboxPrev" aria-label="الصورة السابقة">❮</button>
-        <button class="lightbox-nav next" id="lightboxNext" aria-label="الصورة التالية">❯</button>
+        <button class="lightbox-close-btn" id="lightboxClose" aria-label="Close gallery">✕</button>
+        <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">❮</button>
+        <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">❯</button>
         <div class="lightbox-content">
-            <img src="" alt="معاينة" id="lightboxImg">
+            <img src="" alt="Preview" id="lightboxImg">
         </div>
         <div class="lightbox-dots" id="lightboxDots"></div>
         <div class="lightbox-counter" id="lightboxCounter"></div>
@@ -945,165 +1309,185 @@
 
     <div class="faq-container">
         <div class="top-bar">
-            <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                 <span class="theme-icon-sun">☀️</span>
                 <span class="theme-icon-moon">🌙</span>
-                <span id="themeLabel">الوضع الليلي</span>
+                <span id="themeLabel">Dark Mode</span>
             </button>
         </div>
 
         <div class="faq-header">
             <div class="faq-icon-circle">💬</div>
-            <h1>الأسئلة الشائعة</h1>
-            <p>نجيب هنا على أكثر الأسئلة التي تخطر ببالك. اختر فئة أو ابحث مباشرة.</p>
+            <h1>Frequently Asked Questions</h1>
+            <p>Here we answer the most common questions on your mind. Choose a category or search directly.</p>
         </div>
 
         <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="ابحث عن سؤال...">
+            <input type="text" id="searchInput" placeholder="Search for a question...">
             <span class="search-icon">🔍</span>
-            <button class="search-clear" id="searchClear" aria-label="مسح البحث">✕</button>
+            <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
         </div>
 
         <div class="categories" id="categoriesContainer">
-            <button class="cat-btn active" data-category="all">📋 الكل</button>
-            <button class="cat-btn" data-category="account">👤 الحساب</button>
-            <button class="cat-btn" data-category="billing">💳 الفوترة</button>
-            <button class="cat-btn" data-category="technical">⚙️ تقني</button>
-            <button class="cat-btn" data-category="policy">📜 السياسات</button>
-            <button class="cat-btn" data-category="android">📱 اندرويد</button>
+            <button class="cat-btn active" data-category="all">📋 All</button>
+            <button class="cat-btn" data-category="account">👤 Account</button>
+            <button class="cat-btn" data-category="billing">💳 Billing</button>
+            <button class="cat-btn" data-category="technical">⚙️ Technical</button>
+            <button class="cat-btn" data-category="policy">📜 Policies</button>
+            <button class="cat-btn" data-category="android">📱 Android</button>
+            <button class="cat-btn" data-category="performance">🚀 Performance</button>
         </div>
 
         <div class="results-badge" id="resultsBadge">
-            تم العثور على <span id="resultsCount">0</span> نتائج
+            Found <span id="resultsCount">0</span> results
         </div>
 
         <div class="faq-list" id="faqList"></div>
 
         <div class="no-results" id="noResults">
             <div class="icon">🔎</div>
-            <p>لم نجد نتائج تطابق بحثك.</p>
-            <p style="font-size:13px;margin-top:4px;">جرّب كلمات أخرى أو تصفّح الفئات.</p>
+            <p>No results matching your search.</p>
+            <p style="font-size:13px;margin-top:4px;">Try other keywords or browse the categories.</p>
         </div>
 
         <div class="contact-footer">
-            <div class="contact-title">📞 تواصل معنا</div>
-            <p class="contact-subtitle">نحن هنا لمساعدتك! اختر طريقة التواصل المفضلة</p>
+            <div class="contact-title">📞 Contact Us</div>
+            <p class="contact-subtitle">We are here to help! Choose your preferred contact method</p>
             <div class="contact-cards">
-                <a href="https://wa.me/966512345678" target="_blank" rel="noopener" class="contact-card">💬 واتساب <span style="font-weight:400;font-size:12px;color:var(--text-light);">+966 51 234 5678</span></a>
-                <a href="https://t.me/YourGroupUsername" target="_blank" rel="noopener" class="contact-card">✈️ مجموعة تلغرام <span style="font-weight:400;font-size:12px;color:var(--text-light);">@دعم_المستخدمين</span></a>
-                <a href="mailto:support@example.com" class="contact-card">📧 بريد إلكتروني <span style="font-weight:400;font-size:12px;color:var(--text-light);">support@example.com</span></a>
+                <a href="https://wa.me/966512345678" target="_blank" rel="noopener" class="contact-card">💬 WhatsApp <span style="font-weight:400;font-size:12px;color:var(--text-light);">+966 51 234 5678</span></a>
+                <a href="https://t.me/YourGroupUsername" target="_blank" rel="noopener" class="contact-card">✈️ Telegram Group <span style="font-weight:400;font-size:12px;color:var(--text-light);">@UserSupport</span></a>
+                <a href="mailto:support@example.com" class="contact-card">📧 Email <span style="font-weight:400;font-size:12px;color:var(--text-light);">support@example.com</span></a>
             </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // ==================== بيانات الأسئلة (مع دعم HTML في الإجابات) ====================
+            // ==================== FAQ Data (with HTML support in answers) ====================
             const faqData = [{
                 id: 1,
                 category: 'account',
-                question: 'كيف أقوم بإنشاء حساب جديد؟',
-                answer: 'يمكنك إنشاء حساب جديد بالنقر على زر "تسجيل" في الصفحة الرئيسية، ثم إدخال بريدك الإلكتروني وكلمة مرور قوية. بعدها ستتلقى رسالة تأكيد على بريدك لتفعيل الحساب. ✅',
+                question: 'How do I create a new account?',
+                answer: 'You can create a new account by clicking on the "<b style="color:#f59e0b;">Sign Up</b>" button on the home page, then enter your email and a strong password. You will then receive a confirmation email to activate your account. ✅ <br><span style="font-family:\'Space Grotesk\', sans-serif; color:#d97706; font-weight:600;">Tip: Use a password with symbols and numbers for better security.</span>',
                 images: []
             }, {
                 id: 2,
                 category: 'account',
-                question: 'نسيت كلمة المرور، كيف أستعيدها؟',
-                answer: 'انقر على "<a href="#" target="_blank">نسيت كلمة المرور</a>" في شاشة تسجيل الدخول، وأدخل بريدك الإلكتروني. سنرسل لك رابطًا لإعادة تعيين كلمة المرور خلال دقائق. 📧 تأكد من فحص مجلد البريد غير الهام.',
+                question: 'I forgot my password, how can I recover it?',
+                answer: 'Click on "<a href="#" target="_blank" style="color:#f59e0b; font-weight:800;">Forgot Password</a>" on the login screen, and enter your email. We will send you a link to reset your password within minutes. 📧 <b style="color:#ef4444;">Make sure to check your spam folder!</b>',
                 images: ['https://i.postimg.cc/dVB7K5rk/1a65db159f734d82c5a9d04e52022112.jpg']
             }, {
                 id: 3,
                 category: 'account',
-                question: 'هل يمكنني استخدام حساب واحد على عدة أجهزة؟',
-                answer: 'نعم، يمكنك تسجيل الدخول بحسابك على أجهزة متعددة في آنٍ واحد. 🔐 نستخدم تشفيرًا آمنًا لحماية بياناتك عبر جميع الجلسات النشطة. <br>لمزيد من التفاصيل، راجع <a href="https://example.com/security" target="_blank">سياسة الأمان</a>.',
+                question: 'Can I use one account on multiple devices?',
+                answer: 'Yes, you can log into your account on multiple devices simultaneously. 🔐 We use secure encryption to protect your data across all active sessions. <br><span style="font-family:\'DM Sans\', sans-serif; color:#8b5cf6; font-weight:700;">For more details, review the <a href="https://example.com/security" target="_blank" style="color:#7c3aed;">Security Policy</a>.</span>',
                 images: []
             }, {
                 id: 4,
                 category: 'billing',
-                question: 'ما طرق الدفع المتاحة؟',
-                answer: 'نقبل الدفع عبر جميع البطاقات الائتمانية 💳 (فيزا، ماستركارد، أمريكان إكسبريس)، بالإضافة إلى PayPal والتحويل البنكي المباشر للباقات السنوية. <a href="https://example.com/pricing" target="_blank">قارن الباقات هنا</a>.',
-                images: ['https://placehold.co/600x400/eef0ff/5b6af0?text=💳+طرق+الدفع&font=Tajawal']
+                question: 'What payment methods are available?',
+                answer: 'We accept all credit cards 💳 <b style="color:#10b981;">(Visa, Mastercard, American Express)</b>, as well as <span style="background:linear-gradient(135deg,#10b981,#06b6d4); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-weight:800;">PayPal</span> and direct bank transfer for annual plans. <a href="https://example.com/pricing" target="_blank" style="color:#059669;">Compare plans here</a>.',
+                images: ['https://placehold.co/600x400/eef0ff/5b6af0?text=💳+Payment+Methods&font=Inter']
             }, {
                 id: 5,
                 category: 'billing',
-                question: 'كيف يمكنني ترقية باقتي الحالية؟',
-                answer: 'توجه إلى إعدادات الحساب > قسم الفوترة > اختر "ترقية الباقة". سيتم احتساب المبلغ المدفوع مسبقًا تلقائيًا ويُخصم من سعر الباقة الجديدة. 📈 الترقية فورية!',
+                question: 'How can I upgrade my current plan?',
+                answer: 'Go to <b style="color:#10b981;">Account Settings</b> > Billing section > Choose "<span style="font-weight:800; color:#059669;">Upgrade Plan</span>". The previously paid amount will be automatically calculated and deducted from the new plan price. 📈 Upgrade is instant!',
                 images: []
             }, {
                 id: 6,
                 category: 'billing',
-                question: 'هل يمكنني استرداد المبلغ بعد الدفع؟',
-                answer: 'نقدم ضمان استرداد كامل خلال أول 14 يومًا 💯 دون أي أسئلة. بعد هذه المدة، يمكنك <a href="mailto:support@example.com">مراسلة الدعم</a> لمراجعة حالتك.',
+                question: 'Can I get a refund after payment?',
+                answer: 'We offer a <b style="color:#10b981; font-size:16px;">full refund guarantee</b> within the first 14 days 💯 no questions asked. After this period, you can <a href="mailto:support@example.com" style="color:#059669; font-weight:800;">contact support</a> to review your case.',
                 images: []
             }, {
                 id: 7,
                 category: 'technical',
-                question: 'ما المتصفحات التي يدعمها نظامكم؟',
-                answer: 'نظامنا متوافق مع أحدث إصدارين من Chrome، Firefox، Safari، وEdge. 🌐 ننصح بتحديث متصفحك باستمرار للحصول على أفضل أداء وأمان.',
-                images: ['https://placehold.co/500x300/fef3c7/f59e0b?text=🌐+المتصفحات+المدعومة&font=Tajawal']
+                question: 'What browsers does your system support?',
+                answer: 'Our system is compatible with the latest two versions of <b style="color:#ec4899;">Chrome, Firefox, Safari, and Edge</b>. 🌐 We recommend keeping your browser updated for the best performance and security. <br><span style="font-family:\'Lexend\', sans-serif; color:#be185d; font-weight:600;">Note: Older browsers may experience display issues.</span>',
+                images: ['https://placehold.co/500x300/fef3c7/f59e0b?text=🌐+Supported+Browsers&font=Inter']
             }, {
                 id: 8,
                 category: 'technical',
-                question: 'هل تتوفر واجهة برمجة تطبيقات (API)؟',
-                answer: 'نعم، نوفر REST API شاملًا مع توثيق كامل. يمكنك توليد مفتاح API من لوحة التحكم > إعدادات المطورين. 📚 الوثائق متاحة على <a href="https://portal.example.com/docs" target="_blank">بوابة المطورين</a>.',
+                question: 'Is an API available?',
+                answer: 'Yes, we provide a comprehensive <b style="color:#db2777;">REST API</b> with full documentation. You can generate an API key from the dashboard > Developer Settings. 📚 Documentation is available on the <a href="https://portal.example.com/docs" target="_blank" style="color:#be185d; font-weight:800;">Developer Portal</a>.',
                 images: []
             }, {
                 id: 9,
                 category: 'technical',
-                question: 'كيف أتعامل مع بطء المنصة؟',
-                answer: 'أولاً، تحقق من اتصالك بالإنترنت. ثم امسح ذاكرة التخزين المؤقت للمتصفح. 🧹 إذا استمرت المشكلة، راسل فريق الدعم مع لقطة شاشة.',
+                question: 'How do I deal with platform slowness?',
+                answer: 'First, check your internet connection. Then <b style="color:#ec4899;">clear your browser cache</b>. 🧹 If the issue persists, contact the support team with a screenshot. <br><span style="background:linear-gradient(120deg,#fef3c7,#fde68a); padding:2px 8px; border-radius:4px; color:#92400e; font-weight:700;">Quick tip: Try a different browser.</span>',
                 images: []
             }, {
                 id: 10,
                 category: 'policy',
-                question: 'كيف تحمون بياناتي الشخصية؟',
-                answer: 'نستخدم تشفير AES-256 للبيانات أثناء التخزين وTLS 1.3 للنقل. خوادمنا معتمدة بشهادة SOC 2 Type II. 🔒 لا نشارك بياناتك مع أي طرف ثالث دون إذنك. اقرأ <a href="https://example.com/privacy" target="_blank">سياسة الخصوصية</a>.',
-                images: ['https://placehold.co/500x300/e0e7ff/4338ca?text=🔒+حماية+البيانات&font=Tajawal']
+                question: 'How do you protect my personal data?',
+                answer: 'We use <b style="color:#06b6d4;">AES-256</b> encryption for data at rest and <b style="color:#06b6d4;">TLS 1.3</b> for data in transit. Our servers are SOC 2 Type II certified. 🔒 We do not share your data with any third party without your permission. Read the <a href="https://example.com/privacy" target="_blank" style="color:#0891b2; font-weight:800;">Privacy Policy</a>.',
+                images: ['https://placehold.co/500x300/e0e7ff/4338ca?text=🔒+Data+Protection&font=Inter']
             }, {
                 id: 11,
                 category: 'policy',
-                question: 'ما سياسة إلغاء الاشتراك؟',
-                answer: 'يمكنك إلغاء اشتراكك في أي وقت من إعدادات الحساب. سيظل حسابك نشطًا حتى نهاية دورة الفوترة الحالية، ولن يتم تجديد الاشتراك تلقائيًا بعد الإلغاء. ❌',
+                question: 'What is the subscription cancellation policy?',
+                answer: 'You can cancel your subscription at any time from <b style="color:#06b6d4;">Account Settings</b>. Your account will remain active until the end of the current billing cycle, and the subscription will not auto-renew after cancellation. ❌ <br><span style="font-family:\'DM Sans\', sans-serif; color:#0891b2;">There are no hidden fees upon cancellation.</span>',
                 images: []
             }, {
                 id: 12,
                 category: 'policy',
-                question: 'هل تشاركون بياناتي مع جهات خارجية؟',
-                answer: 'لا نبيع أو نؤجر بياناتك لأي جهة. نشارك الحد الأدنى من البيانات فقط مع مزودي الخدمة الضروريين (مثل بوابة الدفع) بموجب اتفاقيات سرية صارمة. 🤝',
+                question: 'Do you share my data with third parties?',
+                answer: '<b style="color:#06b6d4; font-size:15px;">We do not sell or rent your data to any entity.</b> We only share minimal data with necessary service providers (like the payment gateway) under strict confidentiality agreements. 🤝',
                 images: []
             }, {
                 id: 13,
                 category: 'android',
-                question: 'كيف أحصل على تطبيق أندرويد؟ 🤖',
-                answer: 'تطبيقنا متوفر على متجر Google Play. يمكنك تنزيله من الرابط: <a href="https://play.google.com/store" target="_blank">تحميل التطبيق 📲</a>. بعد التثبيت، سجّل الدخول بنفس حسابك.',
-                images: ['https://placehold.co/500x350/dbeafe/2563eb?text=📱+Google+Play&font=Tajawal']
+                question: 'How do I get the Android app? 🤖',
+                answer: 'Our app is available on the <b style="color:#8b5cf6;">Google Play Store</b>. You can download it from the link: <a href="https://play.google.com/store" target="_blank" style="color:#7c3aed; font-weight:800; font-family:\'Space Grotesk\', sans-serif;">Download App 📲</a>. After installation, log in with your same account.',
+                images: ['https://placehold.co/500x350/dbeafe/2563eb?text=📱+Google+Play&font=Inter']
             }, {
                 id: 14,
                 category: 'android',
-                question: 'إعدادات الإشعارات على أندرويد 🔔',
-                answer: 'لتفعيل الإشعارات: اذهب إلى إعدادات الهاتف > التطبيقات > اختر تطبيقنا > الإشعارات. تأكد من السماح بالإشعارات العاجلة. يمكنك أيضًا تخصيصها من داخل التطبيق. ⚙️',
+                question: 'Notification settings on Android 🔔',
+                answer: 'To enable notifications: Go to <b style="color:#7c3aed;">Phone Settings</b> > Apps > Choose our app > Notifications. Make sure to allow urgent notifications. You can also customize them within the app. ⚙️ <br><span style="font-family:\'Outfit\', sans-serif; color:#6d28d9; font-size:16px;">Tip: Enable urgent notifications to receive important alerts instantly.</span>',
                 images: [
-                    'https://placehold.co/400x500/e0e7ff/4338ca?text=⚙️+إعدادات+1&font=Tajawal',
-                    'https://placehold.co/400x500/d1fae5/059669?text=✅+إعدادات+2&font=Tajawal'
+                    'https://placehold.co/400x500/e0e7ff/4338ca?text=⚙️+Settings+1&font=Inter',
+                    'https://placehold.co/400x500/d1fae5/059669?text=✅+Settings+2&font=Inter'
                 ]
             }, {
                 id: 15,
                 category: 'android',
-                question: 'مشكلة في تشغيل التطبيق على جهازي 📵',
-                answer: 'إذا كان التطبيق يتوقف فجأة، جرّب: 1. مسح ذاكرة التخزين المؤقت من إعدادات التطبيق. 2. التأكد من تحديث نظام أندرويد 📶. 3. إعادة تثبيت التطبيق. للمزيد من المساعدة، تواصل مع <a href="https://t.me/YourGroupUsername" target="_blank">مجموعة الدعم على تلغرام</a>.',
+                question: 'App crashing issue on my device 📵',
+                answer: 'If the app suddenly stops, try:<br><b style="color:#7c3aed;">1. Clearing the cache</b> from app settings<br><b style="color:#6366f1;">2. Making sure Android system is updated</b> 📶<br><b style="color:#8b5cf6;">3. Reinstalling the app</b><br>For more help, contact <a href="https://t.me/YourGroupUsername" target="_blank" style="color:#6d28d9; font-weight:800;">Telegram support group</a>.',
                 images: [
-                    'https://placehold.co/400x400/fecaca/dc2626?text=❌+خطأ&font=Tajawal',
-                    'https://placehold.co/400x400/fef9c3/ca8a04?text=🧹+تخزين&font=Tajawal'
+                    'https://placehold.co/400x400/fecaca/dc2626?text=❌+Error&font=Inter',
+                    'https://placehold.co/400x400/fef9c3/ca8a04?text=🧹+Cache&font=Inter'
                 ]
             }, {
                 id: 16,
                 category: 'android',
-                question: 'هل يدعم التطبيق الوضع الليلي؟ 🌙',
-                answer: 'نعم، يدعم تطبيقنا الوضع الليلي بالكامل. يمكنك تفعيله من إعدادات التطبيق أو جعله يتبع إعدادات النظام. جربه الآن! 🌚',
+                question: 'Does the app support dark mode? 🌙',
+                answer: 'Yes, our app fully supports <b style="color:#8b5cf6; font-size:15px;">dark mode</b>. You can enable it from the app settings or set it to follow system settings. Try it now! 🌚 <br><span style="background:linear-gradient(135deg,#8b5cf6,#6366f1); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-weight:800;">Easy on the eyes in low light.</span>',
                 images: []
+            }, {
+                id: 17,
+                category: 'performance',
+                question: 'How to improve phone performance with simple steps?',
+                answer: `
+                        <strong style="font-size: 17px; color: #f97316; font-family: 'Plus Jakarta Sans', sans-serif;">Optimize your phone in seconds:</strong>
+                        <ul style="font-family: 'Space Grotesk', sans-serif;">
+                            <li>⚡ <b style="color:#ea580c;">Boost RAM</b> – Close unused apps and use the built-in memory optimization feature.</li>
+                            <li>📱 <b style="color:#f97316;">Improve phone speed</b> – Clear cache and reduce widgets and animations.</li>
+                            <li>🧹 <b style="color:#fb923c;">Clean unnecessary files</b> – Delete temporary files and unused apps weekly.</li>
+                        </ul>
+                        <p style="margin-top:12px; font-family: 'DM Sans', sans-serif;">Additionally, you can try <span class="highlight">periodic restarts</span> for better performance. 💪</p>
+                    `,
+                images: [
+                    'https://placehold.co/500x300/d1fae5/10b981?text=🚀+Speed+Up+Phone&font=Inter',
+                    'https://placehold.co/500x300/fef3c7/f59e0b?text=⚡+RAM+Boost&font=Inter',
+                    'https://placehold.co/500x300/ffedd5/f97316?text=🧹+Clean+Files&font=Inter',
+                    'https://placehold.co/500x300/fce7f3/ec4899?text=💪+Better+Performance&font=Inter'
+                ]
             }];
 
-            // تأكد من أن كل عنصر لديه images كمصفوفة
+            // Ensure every item has images as an array
             faqData.forEach(item => {
                 if (!item.images || item.images.length === 0) {
                     item.images = item.image ? [item.image] : [];
@@ -1111,7 +1495,7 @@
                 delete item.image;
             });
 
-            // ==================== عناصر DOM ====================
+            // ==================== DOM Elements ====================
             const faqList = document.getElementById('faqList');
             const searchInput = document.getElementById('searchInput');
             const searchClear = document.getElementById('searchClear');
@@ -1135,7 +1519,7 @@
             let currentIndex = 0;
             let isSwitching = false;
 
-            // ==================== الوضع الليلي ====================
+            // ==================== Dark Mode ====================
             function getSystemTheme() {
                 return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' :
                     'light';
@@ -1146,10 +1530,10 @@
             function applyTheme(theme) {
                 if (theme === 'dark') {
                     document.documentElement.setAttribute('data-theme', 'dark');
-                    themeLabel.textContent = 'الوضع النهاري';
+                    themeLabel.textContent = 'Light Mode';
                 } else {
                     document.documentElement.removeAttribute('data-theme');
-                    themeLabel.textContent = 'الوضع الليلي';
+                    themeLabel.textContent = 'Dark Mode';
                 }
             }
 
@@ -1167,7 +1551,7 @@
             });
             themeToggle.addEventListener('click', toggleTheme);
 
-            // ==================== Lightbox محسّن ====================
+            // ==================== Enhanced Lightbox ====================
             function renderDots() {
                 lightboxDots.innerHTML = '';
                 if (currentImages.length <= 1) return;
@@ -1180,7 +1564,7 @@
                             switchToImage(i);
                         }
                     });
-                    dot.setAttribute('aria-label', `الصورة ${i + 1}`);
+                    dot.setAttribute('aria-label', `Image ${i + 1}`);
                     lightboxDots.appendChild(dot);
                 });
             }
@@ -1273,7 +1657,7 @@
                 else if (e.key === 'ArrowLeft') showPrev();
             });
 
-            // دعم اللمس (swipe) على الجوال
+            // Touch support (swipe) on mobile
             let touchStartX = 0;
             let touchEndX = 0;
             lightboxOverlay.addEventListener('touchstart', (e) => {
@@ -1288,7 +1672,7 @@
                 }
             });
 
-            // ==================== بناء القائمة ====================
+            // ==================== Render List ====================
             function renderFAQ(items) {
                 faqList.innerHTML = '';
                 if (items.length === 0) {
@@ -1310,18 +1694,18 @@
 
                     let answerContent = `<div class="faq-answer">${item.answer}</div>`;
 
-                    // بناء معرض الصور المحسّن
+                    // Build enhanced image gallery
                     let imagesHTML = '';
                     if (item.images && item.images.length > 0) {
                         const gridClass = item.images.length === 1 ? ' single-image-grid' : '';
                         imagesHTML = `
                         <div class="gallery-wrapper">
-                            <div class="gallery-label">📷 معرض الصور (${item.images.length})</div>
+                            <div class="gallery-label">📷 Image Gallery (${item.images.length})</div>
                             <div class="gallery-grid${gridClass}">`;
                         item.images.forEach((imgSrc, imgIdx) => {
                             imagesHTML += `
-                                <div class="gallery-item" data-images='${JSON.stringify(item.images)}' data-index="${imgIdx}" tabindex="0" role="button" aria-label="فتح الصورة ${imgIdx + 1}">
-                                    <img src="${imgSrc}" alt="صورة توضيحية ${imgIdx + 1}" loading="lazy">
+                                <div class="gallery-item" data-images='${JSON.stringify(item.images)}' data-index="${imgIdx}" tabindex="0" role="button" aria-label="Open image ${imgIdx + 1}">
+                                    <img src="${imgSrc}" alt="Illustrative image ${imgIdx + 1}" loading="lazy">
                                     <div class="gallery-item-overlay">
                                         <span class="zoom-icon">🔍</span>
                                     </div>
@@ -1336,7 +1720,7 @@
                     faqItem.innerHTML = `
                         <div class="faq-question" role="button" tabindex="0" aria-expanded="${item.id === openItemId ? 'true' : 'false'}">
                             <div class="faq-question-text">
-                                <span class="faq-q-icon">س</span>
+                                <span class="faq-q-icon">Q</span>
                                 <span>${item.question}</span>
                             </div>
                             <span class="faq-arrow">▼</span>
@@ -1362,7 +1746,7 @@
                         }
                     });
 
-                    // ربط عناصر المعرض بالـ Lightbox
+                    // Bind gallery items to Lightbox
                     const galleryItems = faqItem.querySelectorAll('.gallery-item');
                     galleryItems.forEach(gItem => {
                         gItem.addEventListener('click', (e) => {
@@ -1451,8 +1835,8 @@
             }
             init();
 
-            console.log('✨ FAQ with enhanced gallery & lightbox ready');
+            console.log('✨ FAQ with enhanced gallery, rich HTML & performance tips ready');
         })();
     </script>
 </body>
-          </html>
+</html>
